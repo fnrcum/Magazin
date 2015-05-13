@@ -1,0 +1,53 @@
+<div id="welcome">
+    <div class="holder-cos">
+        <p class="cos-head">Cos de cumparaturi</p>
+        <div class="form-bdy">
+            <table border="0" cellpadding="1" cellspacing="1" id="catalogul" >
+                    <tbody>
+                        <?php $user = $this->user_session;?>
+                        <tr id="bg-simplu">
+                                    
+                                    <td><span id="left">Produs</span></td>
+                                    <td><span id="left">Disponibilitate</span></td>
+                                    <td><span id="left">Cantitate</span></td>
+                                    <td><span id="left">Pret unitar</span></td>
+                                    <td><span id="left">Total (LEI)</span></td>
+                                    
+                            </tr>
+
+                            <?php 
+                            $total=0;
+                            foreach($this->coscumparaturi as $record)
+                             {
+                                echo '<form action="/cos/delete/" method="post"> ';
+                                echo '<tr id="table-text">';
+                                 echo '<td class="stubborn"><input type="submit" name="submit" class="x" /><input type="hidden" name="idprodus" value="'.$record['idprodus'].'" /><strong class="lefty">'.$record['numepiesa'].'</strong></td>';
+                                 echo '<td class="stubborn"><input type="hidden" name="iduser" value="'.$record['iduser'].'" />'.$record['stoc'].'</td>';
+                                 echo '<td class="stubborn">'.$record['cantitate'].'</td>';
+                                 echo '<td class="stubborn">'.$record['pret'].'</td>';
+                                 echo '<td class="stubborn"><strong>'.$ttl =$record['cantitate']*$record['pret'].'</strong></td>';
+                                echo ' </tr>';
+                                echo '</form>';
+                                $total += $ttl;
+                               
+                             }
+                             
+                          ?>             
+
+                        </tbody>
+                    </table>
+            <p id="total">Total Comanda (LEI):<strong> <?= $total ?></strong></p>
+        </div>
+        <p class="cos-head">Date de livrare</p>
+        <div class="form-bdy">
+            <?php if($this->form_comanda): echo $this->form_comanda; endif; ?>
+        </div>
+    </div>
+    <script type="text/javascript">
+  $( document ).tooltip({
+    position: {
+//      my: 'top center',
+//      at: 'top+15 center'
+    }
+  });
+</script>

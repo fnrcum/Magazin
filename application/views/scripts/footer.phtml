@@ -1,0 +1,14 @@
+
+</div>
+<div id="footer">Copyright © 2011 ATP Exodus</div>
+<script type="text/javascript">
+$(document).ready(function(){
+ var dh = $(document).height(); //document height here
+ var hh = $('#logo').height(); //header height
+ var fh = $('#footer').height(); //footer height
+ var wh = Number(dh - (hh + fh)); //this is the height for the wrapper
+ //wh = wh-45;
+ //alert(wh);
+ $('#welcome').css('min-height', wh); //set the height for the wrapper div
+});
+</script>

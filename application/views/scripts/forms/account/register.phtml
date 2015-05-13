@@ -1,0 +1,185 @@
+<form method="<?php echo $this->element->getMethod(); ?>" action="<?php echo $this->element->getAction(); ?>" id="<?php echo $this->element->getAttrib('id'); ?>" class="<?php echo $this->element->getAttrib('class'); ?>" enctype="<?php echo $this->element->getEncType(); ?>">
+	<table id="reg" width="400" cellpadding="0" cellspacing="0" border="0" align="center">
+		<colgroup>
+			<col width="160" />
+		</colgroup>
+		<tr>
+			<td>
+				<p>
+					<?php
+						$attribs = array(); if($this->element->email->isRequired()) { $attribs['class'] = 'required'; }
+						echo $this->formLabel($this->element->email->getName(), $this->element->email->getLabel(), $attribs);
+					?>
+					<span>*</span>
+				</p>
+			</td>
+			<td>
+				<div class="input1">
+				<?php echo $this->{
+				$this->element->email->helper}(
+					$this->element->email->getName(),
+					$this->element->email->getValue(),
+					$this->element->email->getAttribs()
+				);?>
+				</div>
+				<?php //if('<ul class="errors"><li></li></ul>' == ($this->element->email->getMessages())) { echo $this->formErrors($this->element->email->getMessages()); } ?>
+				<small class="description"><?php echo $this->element->email->getDescription(); ?></small>
+			</td>
+		</tr>
+                <tr>
+			<td>
+				<p>
+					<?php
+						$attribs = array(); if($this->element->password->isRequired()) { $attribs['class'] = 'required'; }
+						echo $this->formLabel($this->element->password->getName(), $this->element->password->getLabel(), $attribs);
+					?>
+					<span>*</span>
+				</p>
+			</td>
+			<td>
+				<div class="input1">
+				<?php echo $this->{
+				$this->element->password->helper}(
+					$this->element->password->getName(),
+					$this->element->password->getValue(),
+					$this->element->password->getAttribs()
+				);?>
+				</div>
+				<?php //if('<ul class="errors"><li></li></ul>' == ($this->element->email->getMessages())) { echo $this->formErrors($this->element->email->getMessages()); } ?>
+				<small class="description"><?php echo $this->element->password->getDescription(); ?></small>
+			</td>
+		</tr>
+                
+		<tr>
+			<td>
+				<p>
+					<?php
+						$attribs = array(); if($this->element->nume->isRequired()) { $attribs['class'] = 'required'; }
+						echo $this->formLabel($this->element->nume->getName(), $this->element->nume->getLabel(), $attribs);
+					?>
+<!--					<span>*</span>-->
+				</p>
+			</td>
+			<td>
+				<div class="input1">
+				<?php
+					echo $this->{$this->element->nume->helper}
+							(
+								$this->element->nume->getName(),
+								$this->element->nume->getValue(),
+								$this->element->nume->getAttribs()
+							);
+				?>
+				</div>
+				<?php //if('<ul class="errors"><li></li></ul>' == ($this->element->nume->getMessages())) { echo $this->formErrors($this->element->nume->getMessages()); } ?>
+				<small class="description"><?php echo $this->element->nume->getDescription(); ?></small>
+			</td>
+		</tr>
+		
+		<tr>
+			<td>
+				<p>
+					<?php
+						$attribs = array(); if($this->element->adresa->isRequired()) { $attribs['class'] = 'required'; }
+						echo $this->formLabel($this->element->adresa->getName(), $this->element->adresa->getLabel(), $attribs);
+					?>
+<!--					<span>*</span>-->
+				</p>
+			</td>
+			<td>
+				<div class="input1">
+				<?php
+					echo $this->{$this->element->adresa->helper}
+							(
+								$this->element->adresa->getName(),
+								$this->element->adresa->getValue(),
+								$this->element->adresa->getAttribs()
+							);
+				?>
+				</div>
+				<?php //if('<ul class="errors"><li></li></ul>' == ($this->element->adresa->getMessages())) { echo $this->formErrors($this->element->adresa->getMessages()); } ?>
+				<small class="description"><?php echo $this->element->adresa->getDescription(); ?></small>
+			</td>
+		</tr>
+                
+                <tr>
+			<td>
+				<p>
+					<?php
+						$attribs = array(); if($this->element->tel->isRequired()) { $attribs['class'] = 'required'; }
+						echo $this->formLabel($this->element->tel->getName(), $this->element->tel->getLabel(), $attribs);
+					?>
+					<span>*</span>
+				</p>
+			</td>
+			<td>
+				<div class="input1">
+				<?php
+					echo $this->{$this->element->tel->helper}
+							(
+								$this->element->tel->getName(),
+								$this->element->tel->getValue(),
+								$this->element->tel->getAttribs()
+							);
+				?>
+				</div>
+				<?php //if('<ul class="errors"><li></li></ul>' == ($this->element->telefon->getMessages())) { echo $this->formErrors($this->element->telefon->getMessages()); } ?>
+				<small class="description"><?php echo $this->element->tel->getDescription(); ?></small>
+			</td>
+		</tr>
+                <tr>
+			<td>
+				<p>
+					<?php
+						$attribs = array(); if($this->element->firma->isRequired()) { $attribs['class'] = 'required'; }
+						echo $this->formLabel($this->element->firma->getName(), $this->element->firma->getLabel(), $attribs);
+					?>
+					<span>*</span>
+				</p>
+			</td>
+			<td>
+				<div class="input1">
+				<?php
+					echo $this->{$this->element->firma->helper}
+							(
+								$this->element->firma->getName(),
+								$this->element->firma->getValue(),
+								$this->element->firma->getAttribs()
+							);
+				?>
+				</div>
+				<?php //if('<ul class="errors"><li></li></ul>' == ($this->element->firma->getMessages())) { echo $this->formErrors($this->element->firma->getMessages()); } ?>
+				<small class="description"><?php echo $this->element->firma->getDescription(); ?></small>
+			</td>
+		</tr>
+                
+                <tr>
+			<td>
+                            <?php echo $this->element->label->getLabel(); ?>
+                        </td>
+                        <td>
+                           <div class="captcha-move"><?php echo $this->element->captcha; ?></div> 
+                        </td>
+		</tr>
+                
+		<tr>
+			<td colspan="2" align="center">
+				<?php echo $this->{
+				$this->element->submit->helper}(
+					$this->element->submit->getName(),
+					$this->element->submit->getValue(),
+					$this->element->submit->getAttribs()
+				);?>
+			</td>
+		</tr>
+	</table>
+<!--	<div class="footer_user">
+		<p style="color: #797D92;">Toate campurile marcate cu <span style="font-weight: bold;">*</span> sunt obligatorii.</p>
+	</div>-->
+</form>
+</form>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#<?php echo $this->element->getId();?>").validationEngine();
+	});
+</script>

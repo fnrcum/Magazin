@@ -1,0 +1,12 @@
+<div id="logo">
+    <div id="logo-center">
+        <div id="logo-left">
+            fff
+        </div>
+        <div id="logo-catalog-right">
+            <div id="text"><p>Bună ziua: <strong><?php if(Zend_Auth::getInstance()->hasIdentity()): echo $auth = Zend_Auth::getInstance()->getStorage()->read()->getEmail(); endif ?></strong></p></div>
+            <div id="cont"><p><strong>CONTUL MEU</strong></p></div>
+            <div id="exit"><p><strong><a href="/user/logout/" style="color:#ff000a;">IESIRE</a></strong></p></div>
+        </div>
+    </div>
+</div>

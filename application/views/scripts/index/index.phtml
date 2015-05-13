@@ -1,0 +1,62 @@
+<!--<a href="/index/add">Adauga persoana</a>-->
+
+<?php // if($this->users): ?>
+<!--<div id="more-information">-->
+	<?php // foreach($this->users as $user): ?>
+	<!--<p><?php // echo $user->getName() ?> <small>(<?php // echo $user->getVarsta() ?> ) - <a href="/index/details/id/<?php // echo $user->getId() ?>">detalii</a> <a href="/index/edit/id/<?php // echo $user->getId() ?>">modifica</a> <a href="/index/delete/id/<?php // echo $user->getId() ?>">sterge</a></small></p>-->
+	<?php // endforeach ?>
+<!--</div>-->
+<?php // endif ?>
+
+<div id="welcome">
+    <div id="confirmation">
+        <div id="ok">rrr</div>
+        <p>Modificarea parolei a fost efectuată cu succes.</p>
+    </div>
+    
+    <div id="login-main">
+        <?php if(!empty($this->message)) : ?>
+                <?php foreach($this->message as $value) : ?>
+		<?php echo $value; ?>
+                <?php endforeach; ?>
+                <?php endif; ?>
+        
+        <?php //if(!empty($this->message)) : ?>
+	<?php //foreach($this->message as $value) : ?>
+		<?php //echo $value; ?>
+	<?php //endforeach; ?>
+<?php //endif; ?>
+        <p>Autentificare Catalog ATP</p>
+        <div id="login">
+            <div id="creare">
+                <div id="register-icon">rrr</div>
+                <p><a href="/user/index/">Cerere creare cont</a></p>
+            </div>
+            <div id="inputs">
+<!--                <form action="/user/login/" method="post">
+                    <p id="email-label">Email:</p><input type="email" id="input" required class="validate[required,custom[email]]"/><br />
+                    <p id="pw-label">Parola:</p><input type="password" id="input-pw" required/><br />
+                    <input type="submit" name="submit" value="AUTENTIFICARE" class="btn"/>
+                </form>-->
+                <?php   if($this->login_form):
+                            echo $this->login_form;
+                        endif; 
+                ?>
+            </div>
+        </div>
+    </div>
+    
+    <div id="ceasuri">
+        <div id="scris">
+            Puteţi achiziţiona accesorii 
+            personalizate fără a fi utilizator 
+            autentificat.
+        </div>
+        <div id="ceas">
+            rrr
+        </div>
+        <div id="btn">
+           <a href="javascript:;">VEZI ACCESORII</a> 
+        </div>
+        
+    </div>

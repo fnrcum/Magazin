@@ -1,0 +1,30 @@
+<?php if(Zend_Auth::getInstance()->hasIdentity()){
+                $this->_redirect('/catalog/index/');
+            } ?>
+
+<div id="welcome">
+    <div class="error">
+        <div class="text">Eroare la crearea contului. Vă rugăm încercaţi din nou.</div>
+    </div>
+    
+    <div id="register-wrapper">
+        <div class="text-hold">
+            <div id="text-stanga">
+                Cerere creare cont
+            </div>
+            <div id="text-dreapta">
+                Câmpurile marcate cu   <span style='color:#bf0008;'>*</span>  sunt obligatorii
+            </div>
+        </div>
+        <div class="register-screen">
+            <div class="small-text">Pentru a creea cont, vă rugăm să completaţi datele următoare:</div>
+            <div class="form">
+                <?php if($this->form): echo $this->form; endif   ?>
+            </div>
+        </div>
+                <?php if(!empty($this->message)) : ?>
+                <?php foreach($this->message as $value) : ?>
+		<?php echo $value; ?>
+                <?php endforeach; ?>
+                <?php endif; ?>
+    </div>

@@ -1,0 +1,23 @@
+<?php echo $this->doctype('HTML5'); ?>
+<html>
+<head>
+	<?php echo $this->headTitle(); ?>
+	<?php echo $this->headMeta()->appendName('keywords', 'registru, intrari, iesiri'); ?>
+	<?php echo $this->headMeta()->appendHttpEquiv('Content-Type', 'text/html; charset=UTF-8')
+		->appendHttpEquiv('Content-Language', 'ro-RO')
+		->appendHttpEquiv('expires', date('D, j M Y H:i:s T'))
+		->appendHttpEquiv('pragma', 'no-cache')
+		->appendHttpEquiv('Cache-Control', 'no-cache');
+	?>
+	<?php echo $this->headLink();?>
+	<?php echo $this->headStyle();?>
+	<?php echo $this->headScript();?>
+</head>
+<body>
+        <?php echo $this->render('lang-bar.phtml');?>
+        <?php echo $this->render('logobar_catalog.phtml');?>
+	<?php echo $this->render('navbar_main.phtml');?>
+	<?php echo $this->layout()->content ?>
+	<?php echo $this->render('footer.phtml');?>
+</body>
+</html>

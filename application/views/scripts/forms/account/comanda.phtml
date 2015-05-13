@@ -1,0 +1,182 @@
+<div id="login-form">
+    <?php if(!empty($this->message)) : ?>
+	<?php foreach($this->message as $value) : ?>
+		<?php echo $value; ?>
+	<?php endforeach; ?>
+<?php endif; ?>
+<form method="<?php echo $this->element->getMethod(); ?>" 
+      action="<?php echo $this->element->getAction(); ?>" 
+      id="<?php echo $this->element->getAttrib('id'); ?>" 
+      class="<?php echo $this->element->getAttrib('class'); ?>" 
+      enctype="<?php echo $this->element->getEncType(); ?>"
+>
+<!--	<table width="400" cellpadding="0" cellspacing="0" border="0" align="center">-->
+    <table style="margin-bottom: 5px;"id="log" align="left" border="0" cellpadding="0" cellspacing="0" style="font-size:12px;" >
+		<colgroup>
+			<col width="200" />
+		</colgroup>
+                <tr>
+			<td>
+				<div class="label-login-email">
+					<?php
+						$attribs = array(); if($this->element->contact->isRequired()) { $attribs['class'] = 'required'; }
+						echo $this->formLabel($this->element->contact->getName(), $this->element->contact->getLabel(), $attribs);
+					?>
+					<!--<div class="red">*</div>-->
+                                </div>        
+			</td>
+			<td>
+                            <div class="input-login">
+                                <?php echo $this->{
+                                $this->element->contact->helper}(
+                                        $this->element->contact->getName(),
+                                        $this->element->contact->getValue(),
+                                        $this->element->contact->getAttribs()
+                                );?>
+
+                                <?php //if('<ul class="errors"><li></li></ul>' != ($this->element->name->getMessages())) { echo $this->formErrors($this->element->name->getMessages()); } ?>
+                                <small class="description"><?php echo $this->element->contact->getDescription(); ?></small>
+                            </div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div class="label-login-email">
+					<?php
+						$attribs = array(); if($this->element->email->isRequired()) { $attribs['class'] = 'required'; }
+						echo $this->formLabel($this->element->email->getName(), $this->element->email->getLabel(), $attribs);
+					?>
+					<!--<div class="red">*</div>-->
+                                </div>        
+			</td>
+			<td>
+                            <div class="input-login">
+                                <?php echo $this->{
+                                $this->element->email->helper}(
+                                        $this->element->email->getName(),
+                                        $this->element->email->getValue(),
+                                        $this->element->email->getAttribs()
+                                );?>
+
+                                <?php //if('<ul class="errors"><li></li></ul>' != ($this->element->name->getMessages())) { echo $this->formErrors($this->element->name->getMessages()); } ?>
+                                <small class="description"><?php echo $this->element->email->getDescription(); ?></small>
+                            </div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+                                    <div class="label-login-pass">
+					<?php
+						$attribs = array(); if($this->element->tel->isRequired()) { $attribs['class'] = 'required'; }
+						echo $this->formLabel($this->element->tel->getName(), $this->element->tel->getLabel(), $attribs);
+					?>
+					<!--<span><div class="red">*</div></span>-->
+                                    </div>
+			</td>
+			<td>
+                            <div class="input-login">
+				<div class="input1">
+				<?php
+					echo $this->{$this->element->tel->helper}
+							(
+								$this->element->tel->getName(),
+								$this->element->tel->getValue(),
+								$this->element->tel->getAttribs()
+							);
+				?>
+				</div>
+				<?php //if('<ul class="errors"><li></li></ul>' != ($this->element->varsta->getMessages())) { echo $this->formErrors($this->element->varsta->getMessages()); } ?>
+				<small class="description"><?php echo $this->element->tel->getDescription(); ?></small>
+                            </div>
+			</td>
+		</tr>
+                <tr>
+			<td>
+                                    <div class="label-login-pass">
+					<?php
+						$attribs = array(); if($this->element->adresa->isRequired()) { $attribs['class'] = 'required'; }
+						echo $this->formLabel($this->element->adresa->getName(), $this->element->adresa->getLabel(), $attribs);
+					?>
+					<!--<span><div class="red">*</div></span>-->
+                                    </div>
+			</td>
+			<td>
+                            <div class="input-login">
+				<div class="input1">
+				<?php
+					echo $this->{$this->element->adresa->helper}
+							(
+								$this->element->adresa->getName(),
+								$this->element->adresa->getValue(),
+								$this->element->adresa->getAttribs()
+							);
+				?>
+				</div>
+				<?php //if('<ul class="errors"><li></li></ul>' != ($this->element->varsta->getMessages())) { echo $this->formErrors($this->element->varsta->getMessages()); } ?>
+				<small class="description"><?php echo $this->element->adresa->getDescription(); ?></small>
+                            </div>
+			</td>
+		</tr>
+                <tr>
+			<td>
+                               <?php //echo $this->element->true; 
+                               echo $this->{$this->element->true->helper}
+							(
+								$this->element->true->getName(),
+								$this->element->true->getValue(),
+								$this->element->true->getAttribs()
+							);
+                               ?>   
+			</td>
+			<td>
+                           <?php echo $this->element->true->getLabel();?>
+			</td>
+		</tr>
+                <?php 
+                $auth = Zend_Auth::getInstance()->getStorage()->read();
+           $userid = $auth->getIduser();
+           $db = Zend_Db_Table::getDefaultAdapter();
+           
+           $sql= $db->select()
+                ->from(array('c'=>'cos'))
+                ->joinLeft(array('u'=>'users'), "u.iduser = $userid")
+                ->joinLeft(array('ca'=>'catalog'), 'ca.idprodus = c.idprodus')
+                ->where('c.iduser' . ' =?', $userid);
+                
+                
+                
+           $result = $db->fetchAll($sql);
+                
+                
+                foreach($result as $record)
+                             {
+                                 echo '<input type="hidden" name="iduser" value="'.$record['iduser'].'" />';
+                                 echo '<input type="hidden" name="idcos" value="'.$record['idcos'].'" />';
+                                 
+                             }
+                             
+                          ?>
+                
+		<tr>
+			<td colspan="2" align="center">
+				<?php echo $this->{
+				$this->element->submit->helper}(
+					$this->element->submit->getName(),
+					$this->element->submit->getValue(),
+					$this->element->submit->getAttribs()
+				);?>
+			</td>
+		</tr>
+	</table>
+    <!--<p style="margin-left: 70px; margin-top: 15px;"><a id="registration" style="color: black;" href="javascript:;">Register</a> | <a href="logout" style="color: black;">Logout</a></p>-->
+	
+</form>
+<!--    <div class="footer_user">
+        <p style="float: left;">Toate campurile marcate cu <span style="font-weight: bold; color: red;">*</span> sunt obligatorii.</p>
+	</div>-->
+</div>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#<?php echo $this->element->getId();?>").validationEngine();
+	});
+</script>

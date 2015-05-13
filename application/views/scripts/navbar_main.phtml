@@ -1,0 +1,11 @@
+<?php $auth = Zend_Auth::getInstance()->getStorage()->read();?>
+<div id="navbar-catalog">
+    <div id="navbar-catalog-center">
+        <ul>
+            <li id="navigare1" class="active"><a href="/catalog/index/">PIESE AUTO</a></li>
+            <li  id="navigare2"><a href="javascript:;">ACCESORII</a></li>
+            <li  id="navigare3"><a href="javascript:;">ASISTENTA CLIENTI</a></li>
+            <li  id="navigare4"><a href="/cos/index/">COSUL MEU: <?php echo $this->obiectecos ?> produse</a></li>
+        </ul>
+    </div>
+</div>
