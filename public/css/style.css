@@ -64,6 +64,7 @@ div#more-information{
 }
 .captcha{
     float: left;
+    color: red;
 }
 #reg{
     table-layout: fixed;
@@ -518,6 +519,11 @@ div#more-information{
     margin: 0 auto;
     background: url(../image/catalog/error.png);
     display: none;
+    
+}
+
+.error{
+    color: red;
 }
 
 .error>.text{

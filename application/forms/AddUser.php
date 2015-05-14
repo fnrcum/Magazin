@@ -61,19 +61,19 @@ class Default_Form_AddUser extends Zend_Form
                         'wordLen' => 6,
                         'timeout' => 300,
                         'font' => '/home/nicu/arial_narrow_7.ttf',
-                        'fontSize' => '20',
+                        'fontSize' => '22',
                         'wordLen' => 5,
                         'height' => '40',
                         'width' => '129',
                         'imgDir' => APPLICATION_PATH.'/../public/captcha',
                         'imgUrl' => Zend_Controller_Front::getInstance()->getBaseUrl().'/captcha',
-                        'dotNoiseLevel' => 20,
+                        'dotNoiseLevel' => 30,
                         'lineNoiseLevel' => 2,
                         'messages' => array(
                         'badCaptcha' => 'Invalid captcha')
                         ),
                 ));
-                $captcha->setAttribs(array('class'=>'bullet captcha validate[required]'));
+                $captcha->setAttribs(array('class'=>'error bullet captcha validate[required]'));
                 $this->addElement($captcha);
 
 
