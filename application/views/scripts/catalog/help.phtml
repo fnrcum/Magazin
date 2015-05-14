@@ -1,0 +1,57 @@
+<div id="welcome">
+    <div class="holder">
+        <p id="piese-auto">Piese Auto</p>
+            <div class="dbl-bg">
+                <form id="frm" action="/catalog/filter/" method="post">
+                    <div class="filter"> <label for="cod">Cod: </label><input id="search-txt" type="text" name="cod" class="validate[custom[onlyNumber],minSize[4],maxSize[4]]" /><input id="submit-search" type="submit" name="submit" /></div>
+                </form>
+                <script type="text/javascript">$("#frm").validationEngine();</script>
+                <table border="0" cellpadding="1" cellspacing="1" id="catalogul" >
+                    <tbody>
+                        <?php $user = $this->user_session;?>
+                        <tr id="bg-simplu">
+                                    <td>Cod furnizor</td>
+                                    <td>COD</td>
+                                    <td>NUME PIESA</td>
+                                    <td>Pret</td>
+                                    <td>TIP COD</td>
+                                    <td>Marca</td>
+                                    <td>Stoc</td>
+                                    <td>COD ATP</td>
+                                    <td style="width: 85px;">COMANDA</td>
+                            </tr>
+
+                            <?php 
+                            foreach($this->paginator as $record)
+                             {
+                                echo '<form action="/catalog/addcos/" method="post"> ';
+                                echo '<input type="hidden" name="idprodus" value="'.$record->getIdprodus().'" />';
+                                echo '<input type="hidden" name="iduser" value="'.$user.'" />';
+                                echo '<tr id="table-text">';
+                                 echo '<td><input type="hidden" name="codfurnizor" value="'.$record->getCodfurnizor().'" />'.$record->getCodfurnizor().'</td>';
+                                 echo '<td><input type="hidden" name="cod" value="'.$record->getCod().'" />'.$record->getCod().'</td>';
+                                 echo '<td><input type="hidden" name="numepiesa" value="'.$record->getNumepiesa().'" />'.$record->getNumepiesa().'</td>';
+                                 echo '<td><input type="hidden" name="pret" value="'.$record->getPret().'" />'.$record->getPret().'</td>';
+                                 echo '<td><input type="hidden" name="tipcod" value="'.$record->getTipcod().'" />'.$record->getTipcod().'</td>';
+                                 echo '<td><input type="hidden" name="marca" value="'.$record->getMarca().'" />'.$record->getMarca().'</td>';
+                                 echo '<td><input type="hidden" name="stoc" value="'.$record->getStoc().'" />'.$record->getStoc().'</td>';
+                                 echo '<td><input type="hidden" name="codatp" value="'.$record->getCodatp().'" />'.$record->getCodatp().'</td>';
+                                 echo '<td style="text-align: left;">'.'<input type="number" value="1" min="1" name="cantitate" id="qt-input"/> <input id="tooltip" class="plus" type="submit" title="Adauga in cos" />'.'</td>';
+                                echo ' </tr>';
+                                echo '</form>';
+                             }
+                          ?>             
+
+                        </tbody>
+                    </table>
+        <?= $this->paginationControl($this->paginator, 'Sliding', 'paginator.phtml'); ?>
+            </div>
+    </div>
+    <script type="text/javascript">
+  $( document ).tooltip({
+    position: {
+//      my: 'top center',
+//      at: 'top+15 center'
+    }
+  });
+</script>
