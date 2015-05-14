@@ -16,18 +16,18 @@ class IndexController extends Zend_Controller_Action
         public function indexAction()
         {
             $form = new Default_Form_Login();
-		$form->setDecorators(array('ViewScript', array('ViewScript', array('viewScript' => 'forms/account/login.phtml'))));
-		$this->view->login_form = $form;
+            $form->setDecorators(array('ViewScript', array('ViewScript', array('viewScript' => 'forms/account/login.phtml'))));
+            $this->view->login_form = $form;
 		
-        if($this->getRequest()->isPost()) {
-            if($form->isValid($this->getRequest()->getPost())) {
-            	$dbAdapter = new Zend_Auth_Adapter_DbTable($this->db, 'users', 'email', 'password', 'MD5(?)');
-            	$dbAdapter -> setIdentity($this->getRequest()->getPost('email'))
-            			   -> setCredential($this->getRequest()->getPost('password'));
-            	
-            	$auth = Zend_Auth::getInstance();
-            	$result = $auth->authenticate($dbAdapter);
-            	if(!$result->isValid()) {
+                if($this->getRequest()->isPost()) {
+                    if($form->isValid($this->getRequest()->getPost())) {
+                        $dbAdapter = new Zend_Auth_Adapter_DbTable($this->db, 'users', 'email', 'password', 'MD5(?)');
+                        $dbAdapter -> setIdentity($this->getRequest()->getPost('email'))
+                                           -> setCredential($this->getRequest()->getPost('password'));
+
+                        $auth = Zend_Auth::getInstance();
+                        $result = $auth->authenticate($dbAdapter);
+                        if(!$result->isValid()) {
 					switch($result->getCode()) {
 					
 					    case Zend_Auth_Result::FAILURE_IDENTITY_NOT_FOUND:
@@ -44,7 +44,7 @@ class IndexController extends Zend_Controller_Action
 					        break;
 					}                                        
 					$this->_redirect('/index/');
-            	} else {
+                    } else {
 		        	$accountId = $dbAdapter->getResultRowObject();
 		        	$model = new Default_Model_Users();
 		        	$model->find($accountId->iduser);

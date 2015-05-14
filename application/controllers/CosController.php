@@ -30,9 +30,9 @@ class CosController extends Zend_Controller_Action
            $result = $db->fetchAll($sql);
            $this->view->coscumparaturi=$result;
            
-           //$form = new Default_Form_Comanda();
-	   //$form->setDecorators(array('ViewScript', array('ViewScript', array('viewScript' => 'forms/account/comanda.phtml'))));
-	   //$this->view->form_comanda = $form;
+//           $form = new Default_Form_Comanda();
+//	   $form->setDecorators(array('ViewScript', array('ViewScript', array('viewScript' => 'forms/account/comanda.phtml'))));
+//	   $this->view->form_comanda = $form;
         }
 
        

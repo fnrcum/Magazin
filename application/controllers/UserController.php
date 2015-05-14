@@ -20,7 +20,7 @@ class UserController extends Zend_Controller_Action
             $form->setDecorators(array('ViewScript', array('ViewScript', array('viewScript' => 'forms/account/register.phtml'))));
             $this->view->form = $form;
             if($this->getRequest()->isPost())
-		{
+		{ 
                     if($form->isValid($this->getRequest()->getPost()))
 			{
                             $password= $this->getRequest()->getPost('password');
@@ -46,11 +46,7 @@ class UserController extends Zend_Controller_Action
                                             $this->_redirect('/catalog/');
                                         }
                                     }
-                                   
-                                   
-                                       
-                                  
-                            
+
                         }else{
                             
                         }

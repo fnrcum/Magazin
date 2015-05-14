@@ -68,7 +68,7 @@ class Default_Form_AddUser extends Zend_Form
                         'imgDir' => APPLICATION_PATH.'/../public/captcha',
                         'imgUrl' => Zend_Controller_Front::getInstance()->getBaseUrl().'/captcha',
                         'dotNoiseLevel' => 20,
-                        'lineNoiseLevel' => 1,
+                        'lineNoiseLevel' => 2,
                         'messages' => array(
                         'badCaptcha' => 'Invalid captcha')
                         ),
